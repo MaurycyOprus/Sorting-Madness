@@ -16,5 +16,4 @@ jobs:
       - name: Build with Maven
         run: |
           mvn --batch-mode --update-snapshots verify
-          mvn site
           mvn clean compile assembly:single
