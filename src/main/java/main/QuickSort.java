@@ -42,12 +42,11 @@ public class QuickSort {
         swap(arr, i + 1, high);
         return (i + 1);
     }
-
     /* The main function that implements QuickSort
-              arr[] --> Array to be sorted,
-              low --> Starting index,
-              high --> Ending index
-     */
+          arr[] --> Array to be sorted,
+          low --> Starting index,
+          high --> Ending index
+ */
     static void sort(int[] arr, int low, int high)
     {
         if (low < high)
@@ -64,19 +63,32 @@ public class QuickSort {
         }
     }
 
-    static void ReverseSort(int[] arr, int low, int high)
-    {
-        if (low > high)
+    public int RevPartition(int arr[], int left, int right){
+        int pivot = arr[left];
+        int i = left;
+        for(int j = left + 1; j <= right; j++){
+            if (arr[j] > pivot){
+                i = i + 1;
+                int temp = arr[i];
+                arr[i]= arr[j];
+                arr[j]= temp;
+            }
+        }
+
+        int temp = arr[i];
+        arr[i] = arr[left];
+        arr[left] = temp;
+
+        return i;
+
+    }
+
+    public void ReverseSort(int arr[], int left, int right){
+        if(left < right)
         {
-
-            // pi is partitioning index, arr[p]
-            // is now at right place
-            int pi = partition(arr, low, high);
-
-            // Separately sort elements before
-            // partition and after partition
-            sort(arr, low, pi - 1);
-            sort(arr, pi + 1, high);
+            int q = RevPartition(arr, left, right);
+            ReverseSort(arr, left, q);
+            ReverseSort(arr, q + 1, right);
         }
     }
     // Prints the array
