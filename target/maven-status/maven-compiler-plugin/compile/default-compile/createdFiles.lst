@@ -1,4 +1,12 @@
+pl\put\poznan\transformer\logic\SelectionSort.class
+pl\put\poznan\transformer\rest\BubbleSortController.class
+pl\put\poznan\transformer\rest\InsertionSortController.class
+pl\put\poznan\transformer\rest\QuickSortController.class
+pl\put\poznan\transformer\logic\BubbleSort.class
+main\Main.class
+pl\put\poznan\transformer\rest\SelectionSortController.class
+pl\put\poznan\transformer\logic\QuickSort.class
+pl\put\poznan\transformer\logic\InsertionSort.class
 pl\put\poznan\transformer\app\TextTransformerApplication.class
 pl\put\poznan\transformer\rest\TextTransformerController.class
-main\Main.class
 pl\put\poznan\transformer\logic\TextTransformer.class
