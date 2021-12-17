@@ -17,3 +17,4 @@ jobs:
         run: |
           mvn --batch-mode --update-snapshots verify
           mvn clean compile assembly:single
+          mvn site
