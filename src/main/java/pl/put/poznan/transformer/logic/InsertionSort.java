@@ -3,21 +3,34 @@ import java.util.Arrays;
 
 public class InsertionSort {
 
-    private String direction;
-    private int arr[];
-    private int arr_beg[];
-    private double exe_time;
+    private final String direction;
+    private final int[] arr;
+    private static final int[] arr_beg = {64,25,12,22,11};
+    private final double exe_time;
+    private final int depth;
 
-    public InsertionSort(int arr[], String direction){
-        this.arr_beg = Arrays.copyOf(arr, arr.length);
-        this.arr = arr;
+    int[] copy = Arrays.copyOf(arr_beg, arr_beg.length);
+
+    public InsertionSort(String direction, int depth){
+        this.arr = copy;
         this.direction = direction;
+        this.depth = depth;
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
-            ReverseSort();
+            if(this.depth == -1) {
+                ReverseSort(copy.length);
+            }
+            else {
+                ReverseSort(this.depth);
+            }
         }
         if(this.direction.equals("normal")) {
-            sort();
+            if(this.depth == -1) {
+                sort(copy.length);
+            }
+            else {
+                sort(this.depth);
+            }
         }
         long endTime = System.nanoTime();
         this.exe_time = (endTime-startTime)/1000000000.0;
@@ -35,10 +48,10 @@ public class InsertionSort {
     public double getExe_time(){
         return exe_time;
     }
+    public int getDepth(){ return depth; }
 
-    void sort(){
-        int n = this.arr.length;
-        for (int i = 1; i < n; ++i) {
+    void sort(int depth){
+        for (int i = 1; i < depth; ++i) {
             int key = this.arr[i];
             int j = i - 1;
 
@@ -53,9 +66,8 @@ public class InsertionSort {
         }
     }
 
-    void ReverseSort(){
-        int n = this.arr.length;
-        for (int i = 1; i < n; ++i) {
+    void ReverseSort(int depth){
+        for (int i = 1; i < depth; ++i) {
             int key = this.arr[i];
             int j = i - 1;
 
@@ -68,15 +80,6 @@ public class InsertionSort {
             }
             this.arr[j + 1] = key;
         }
-    }
-
-    // Prints the array
-    void printArray(int arr[])
-    {
-        int n = arr.length;
-        for (int i=0; i<n; ++i)
-            System.out.print(arr[i]+" ");
-        System.out.println();
     }
 
 }

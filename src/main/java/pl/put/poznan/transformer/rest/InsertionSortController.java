@@ -9,10 +9,15 @@ import pl.put.poznan.transformer.logic.InsertionSort;
 @RestController
 public class InsertionSortController {
 
-    private final int[] arr_begin = {64,25,12,22,11};
-
     @GetMapping("/insertionsort")
-    public InsertionSort insertion_sort(@RequestParam(value="direction", defaultValue = "normal")String direction) {
-        return new InsertionSort(arr_begin, direction);
+    public InsertionSort insertion_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+        String direction = "normal";
+        return new InsertionSort(direction, depth);
+    }
+
+    @GetMapping("/insertionsortreverse")
+    public InsertionSort insertion_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+        String direction = "reverse";
+        return new InsertionSort(direction, depth);
     }
 }

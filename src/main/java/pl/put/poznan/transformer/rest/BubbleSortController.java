@@ -9,10 +9,14 @@ import pl.put.poznan.transformer.logic.BubbleSort;
 @RestController
 public class BubbleSortController {
 
-    private final int[] arr_begin = {64,25,12,22,11};
-
     @GetMapping("/bubblesort")
-    public BubbleSort bubble_sort(@RequestParam(value="direction", defaultValue = "normal")String direction) {
-        return new BubbleSort(arr_begin, direction);
+    public BubbleSort bubble_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+        String direction = "normal";
+        return new BubbleSort(direction, depth);
+    }
+    @GetMapping("/bubblesortreverse")
+    public BubbleSort bubble_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+        String direction = "reverse";
+        return new BubbleSort(direction, depth);
     }
 }

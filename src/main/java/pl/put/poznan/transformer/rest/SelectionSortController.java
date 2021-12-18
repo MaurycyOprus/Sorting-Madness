@@ -9,10 +9,15 @@ import pl.put.poznan.transformer.logic.SelectionSort;
 @RestController
 public class SelectionSortController {
 
-    private final int[] arr_begin = {64,25,12,22,11};
-
     @GetMapping("/selectionsort")
-    public SelectionSort bubble_sort(@RequestParam(value="direction", defaultValue = "normal")String direction) {
-        return new SelectionSort(arr_begin, direction);
+    public SelectionSort selection_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+        String direction = "normal";
+        return new SelectionSort(direction, depth);
+    }
+
+    @GetMapping("/selectionsortreverse")
+    public SelectionSort selection_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+        String direction = "reverse";
+        return new SelectionSort(direction, depth);
     }
 }

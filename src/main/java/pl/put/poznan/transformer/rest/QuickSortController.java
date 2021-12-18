@@ -9,10 +9,14 @@ import pl.put.poznan.transformer.logic.QuickSort;
 @RestController
 public class QuickSortController {
 
-    private final int[] arr_begin = {64,25,12,22,11};
-
     @GetMapping("/quicksort")
-    public QuickSort bubble_sort(@RequestParam(value="direction", defaultValue = "normal")String direction) {
-        return new QuickSort(arr_begin, direction);
+    public QuickSort quick_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+        String direction = "normal";
+        return new QuickSort(direction, depth);
+    }
+    @GetMapping("/quicksortreverse")
+    public QuickSort quick_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+        String direction = "reverse";
+        return new QuickSort(direction, depth);
     }
 }

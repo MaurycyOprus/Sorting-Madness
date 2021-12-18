@@ -3,22 +3,33 @@ package pl.put.poznan.transformer.logic;
 import java.util.Arrays;
 
 public class QuickSort {
-    private String direction;
-    private int arr[];
-    private int arr_beg[];
-    private double exe_time;
+    private final String direction;
+    private final int[] arr;
+    private static final int[] arr_beg = {64,25,12,22,11};
+    private final double exe_time;
 
-    public QuickSort(int arr[], String direction){
-        int n = arr.length;
-        this.arr_beg = Arrays.copyOf(arr, n);
-        this.arr = arr;
+    int[] copy = Arrays.copyOf(arr_beg, arr_beg.length);
+
+    public QuickSort(String direction, int depth){
+        int n = copy.length;
+        this.arr = copy;
         this.direction = direction;
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
-            ReverseSort(0, n-1);
+            if(depth == -1) {
+                ReverseSort(0, n-1);
+            }
+            else {
+                ReverseSort(0, depth -1);
+            }
         }
         if(this.direction.equals("normal")) {
-            sort(0, n-1);
+            if(depth == -1) {
+                sort(0, n-1);
+            }
+            else {
+                sort(0, depth -1);
+            }
         }
         long endTime = System.nanoTime();
         this.exe_time = (endTime-startTime)/1000000000.0;
