@@ -1,15 +1,19 @@
 package pl.put.poznan.transformer.logic;
+import pl.put.poznan.transformer.app.ReadingArrayFromJSON;
+
 import java.util.Arrays;
 
 public class InsertionSort {
 
+    ReadingArrayFromJSON json = new ReadingArrayFromJSON();
+    long[] copy = Arrays.copyOf(json.getArray(),json.getArray().length);
+
     private final String direction;
-    private final int[] arr;
-    private static final int[] arr_beg = {64,25,12,22,11};
+    private final long[] arr;
+    private final long[] arr_beg = json.getArray();
     private final double exe_time;
     private final int depth;
 
-    int[] copy = Arrays.copyOf(arr_beg, arr_beg.length);
 
     public InsertionSort(String direction, int depth){
         this.arr = copy;
@@ -36,10 +40,10 @@ public class InsertionSort {
         this.exe_time = (endTime-startTime)/1000000000.0;
     }
 
-    public int[] getArr() {
+    public long[] getArr() {
         return Arrays.copyOf(arr, arr.length);
     }
-    public int[] getArr_beg() {
+    public long[] getArr_beg() {
         return Arrays.copyOf(arr_beg, arr_beg.length);
     }
     public String getDirection() {
@@ -52,7 +56,7 @@ public class InsertionSort {
 
     void sort(int depth){
         for (int i = 1; i < depth; ++i) {
-            int key = this.arr[i];
+            long key = this.arr[i];
             int j = i - 1;
 
             /* Move elements of arr[0..i-1], that are
@@ -68,7 +72,7 @@ public class InsertionSort {
 
     void ReverseSort(int depth){
         for (int i = 1; i < depth; ++i) {
-            int key = this.arr[i];
+            long key = this.arr[i];
             int j = i - 1;
 
             /* Move elements of arr[0..i-1], that are

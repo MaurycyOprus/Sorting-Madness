@@ -1,14 +1,19 @@
 package pl.put.poznan.transformer.logic;
 
+import pl.put.poznan.transformer.app.ReadingArrayFromJSON;
+
 import java.util.Arrays;
 
 public class QuickSort {
+
+    ReadingArrayFromJSON json = new ReadingArrayFromJSON();
+    long[] copy = Arrays.copyOf(json.getArray(),json.getArray().length);
+
     private final String direction;
-    private final int[] arr;
-    private static final int[] arr_beg = {64,25,12,22,11};
+    private final long[] arr;
+    private final long[] arr_beg = json.getArray();
     private final double exe_time;
 
-    int[] copy = Arrays.copyOf(arr_beg, arr_beg.length);
 
     public QuickSort(String direction, int depth){
         int n = copy.length;
@@ -35,10 +40,10 @@ public class QuickSort {
         this.exe_time = (endTime-startTime)/1000000000.0;
     }
 
-    public int[] getArr() {
+    public long[] getArr() {
         return Arrays.copyOf(arr, arr.length);
     }
-    public int[] getArr_beg() {
+    public long[] getArr_beg() {
         return Arrays.copyOf(arr_beg, arr_beg.length);
     }
     public String getDirection() {
@@ -50,7 +55,7 @@ public class QuickSort {
     // A utility function to swap two elements
     void swap(int i, int j)
     {
-        int temp = this.arr[i];
+        long temp = this.arr[i];
         this.arr[i] = this.arr[j];
         this.arr[j] = temp;
     }
@@ -64,7 +69,7 @@ public class QuickSort {
     {
 
         // pivot
-        int pivot = this.arr[high];
+        long pivot = this.arr[high];
 
         // Index of smaller element and
         // indicates the right position
@@ -110,18 +115,18 @@ public class QuickSort {
     }
 
     public int RevPartition(int left, int right){
-        int pivot = this.arr[left];
+        long pivot = this.arr[left];
         int i = left;
         for(int j = left + 1; j <= right; j++){
             if (this.arr[j] > pivot){
                 i = i + 1;
-                int temp = this.arr[i];
+                long temp = this.arr[i];
                 this.arr[i]= this.arr[j];
                 this.arr[j]= temp;
             }
         }
 
-        int temp = this.arr[i];
+        long temp = this.arr[i];
         this.arr[i] = this.arr[left];
         this.arr[left] = temp;
 

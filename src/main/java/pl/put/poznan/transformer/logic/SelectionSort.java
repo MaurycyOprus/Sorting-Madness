@@ -1,14 +1,18 @@
 package pl.put.poznan.transformer.logic;
 
+import pl.put.poznan.transformer.app.ReadingArrayFromJSON;
+
 import java.util.Arrays;
 
 public class SelectionSort {
-    private final String direction;
-    private final int[] arr;
-    private static final int[] arr_beg = {64,25,12,22,11};
-    private final double exe_time;
 
-    int[] copy = Arrays.copyOf(arr_beg, arr_beg.length);
+    ReadingArrayFromJSON json = new ReadingArrayFromJSON();
+    long[] copy = Arrays.copyOf(json.getArray(),json.getArray().length);
+
+    private final String direction;
+    private final long[] arr;
+    private final long[] arr_beg = json.getArray();
+    private final double exe_time;
 
     public SelectionSort(String direction, int depth){
         this.arr = copy;
@@ -34,10 +38,10 @@ public class SelectionSort {
         this.exe_time = (endTime-startTime)/1000000000.0;
     }
 
-    public int[] getArr() {
+    public long[] getArr() {
         return Arrays.copyOf(arr, arr.length);
     }
-    public int[] getArr_beg() {
+    public long[] getArr_beg() {
         return Arrays.copyOf(arr_beg, arr_beg.length);
     }
     public String getDirection() {
@@ -60,7 +64,7 @@ public class SelectionSort {
 
             // Swap the found minimum element with the first
             // element
-            int temp = this.arr[min_idx];
+            long temp = this.arr[min_idx];
             this.arr[min_idx] = this.arr[i];
             this.arr[i] = temp;
         }
@@ -80,7 +84,7 @@ public class SelectionSort {
 
             // Swap the found minimum element with the first
             // element
-            int temp = this.arr[max_idx];
+            long temp = this.arr[max_idx];
             this.arr[max_idx] = this.arr[i];
             this.arr[i] = temp;
         }
