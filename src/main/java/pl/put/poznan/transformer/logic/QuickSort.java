@@ -23,13 +23,13 @@ public class QuickSort {
         this.depth = depth;
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
-            if(depth == -1) {
+            if(this.depth <= 0) {
                 ReverseSort(0, n-1);
             }
             ReverseSort(0,Math.min(n, this.depth)-1);
         }
         if(this.direction.equals("normal")) {
-            if(depth == -1) {
+            if(this.depth <= 0) {
                 sort(0, n-1);
             }
             sort(0,Math.min(n, this.depth)-1);

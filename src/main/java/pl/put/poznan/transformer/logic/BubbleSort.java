@@ -21,13 +21,13 @@ public class BubbleSort {
         this.depth = depth;
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
-            if(this.depth == -1) {
+            if(this.depth <= 0) {
                 ReverseSort(copy.length);
             }
             ReverseSort(Math.min(this.depth, copy.length));
         }
         if(this.direction.equals("normal")) {
-            if(this.depth == -1) {
+            if(this.depth <= 0) {
                 sort(copy.length);
             }
             sort(Math.min(this.depth, copy.length));
