@@ -24,17 +24,13 @@ public class BubbleSort {
             if(this.depth == -1) {
                 ReverseSort(copy.length);
             }
-            else {
-                ReverseSort(this.depth);
-            }
+            ReverseSort(Math.min(this.depth, copy.length));
         }
         if(this.direction.equals("normal")) {
             if(this.depth == -1) {
                 sort(copy.length);
             }
-            else {
-                sort(this.depth);
-            }
+            sort(Math.min(this.depth, copy.length));
         }
         long endTime = System.nanoTime();
         this.exe_time = (endTime-startTime)/1000000000.0;

@@ -13,28 +13,26 @@ public class QuickSort {
     private final long[] arr;
     private final long[] arr_beg = json.getArray();
     private final double exe_time;
+    private final int depth;
 
 
     public QuickSort(String direction, int depth){
         int n = copy.length;
         this.arr = copy;
         this.direction = direction;
+        this.depth = depth;
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
             if(depth == -1) {
                 ReverseSort(0, n-1);
             }
-            else {
-                ReverseSort(0, depth -1);
-            }
+            ReverseSort(0,Math.min(n, this.depth)-1);
         }
         if(this.direction.equals("normal")) {
             if(depth == -1) {
                 sort(0, n-1);
             }
-            else {
-                sort(0, depth -1);
-            }
+            sort(0,Math.min(n, this.depth)-1);
         }
         long endTime = System.nanoTime();
         this.exe_time = (endTime-startTime)/1000000000.0;

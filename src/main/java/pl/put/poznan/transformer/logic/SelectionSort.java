@@ -13,26 +13,24 @@ public class SelectionSort {
     private final long[] arr;
     private final long[] arr_beg = json.getArray();
     private final double exe_time;
+    private final int depth;
 
     public SelectionSort(String direction, int depth){
         this.arr = copy;
         this.direction = direction;
+        this.depth = depth;
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
             if(depth == -1) {
                 ReverseSort(copy.length);
             }
-            else {
-                ReverseSort(depth);
-            }
+            ReverseSort(Math.min(this.depth, copy.length));
         }
         if(this.direction.equals("normal")) {
             if(depth == -1) {
                 sort(copy.length);
             }
-            else {
-                sort(depth);
-            }
+            sort(Math.min(this.depth, copy.length));
         }
         long endTime = System.nanoTime();
         this.exe_time = (endTime-startTime)/1000000000.0;
