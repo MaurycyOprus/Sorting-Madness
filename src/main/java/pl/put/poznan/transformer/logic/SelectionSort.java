@@ -6,31 +6,29 @@ import java.util.Arrays;
 
 public class SelectionSort {
 
-    ReadingArrayFromJSON json = new ReadingArrayFromJSON();
-    long[] copy = Arrays.copyOf(json.getArray(),json.getArray().length);
-
     private final String direction;
     private final long[] arr;
-    private final long[] arr_beg = json.getArray();
+    private final long[] arr_beg;
     private final double exe_time;
     private final int depth;
 
-    public SelectionSort(String direction, int depth){
-        this.arr = copy;
+    public SelectionSort(long[] arr, long[] arr2,  String direction, int depth){
+        this.arr_beg = arr2;
+        this.arr = arr;
         this.direction = direction;
         this.depth = depth;
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
             if(this.depth <= 0) {
-                ReverseSort(copy.length);
+                ReverseSort(this.arr.length);
             }
-            ReverseSort(Math.min(this.depth, copy.length));
+            ReverseSort(Math.min(this.depth, this.arr.length));
         }
         if(this.direction.equals("normal")) {
             if(this.depth <= 0) {
-                sort(copy.length);
+                sort(this.arr.length);
             }
-            sort(Math.min(this.depth, copy.length));
+            sort(Math.min(this.depth, this.arr.length));
         }
         long endTime = System.nanoTime();
         this.exe_time = (endTime-startTime)/1000000000.0;

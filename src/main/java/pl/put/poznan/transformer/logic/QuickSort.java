@@ -6,19 +6,20 @@ import java.util.Arrays;
 
 public class QuickSort {
 
-    ReadingArrayFromJSON json = new ReadingArrayFromJSON();
-    long[] copy = Arrays.copyOf(json.getArray(),json.getArray().length);
+//    ReadingArrayFromJSON json = new ReadingArrayFromJSON();
+//    long[] copy = Arrays.copyOf(json.getArray(),json.getArray().length);
 
     private final String direction;
     private final long[] arr;
-    private final long[] arr_beg = json.getArray();
+    private final long[] arr_beg;
     private final double exe_time;
     private final int depth;
 
 
-    public QuickSort(String direction, int depth){
-        int n = copy.length;
-        this.arr = copy;
+    public QuickSort(long[] arr, long[] arr2, String direction, int depth){
+        int n = arr.length;
+        this.arr_beg = arr2;
+        this.arr = arr;
         this.direction = direction;
         this.depth = depth;
         long startTime = System.nanoTime();
