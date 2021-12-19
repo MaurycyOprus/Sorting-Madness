@@ -1,16 +1,24 @@
 package pl.put.poznan.transformer.logic;
 
+import pl.put.poznan.transformer.app.ReadingArrayFromJSON;
+
 import java.util.Arrays;
 
 public class BubbleSort {
 
+    ReadingArrayFromJSON json = new ReadingArrayFromJSON();
+
+
+    long[] copy = Arrays.copyOf(json.getArray(),json.getArray().length);
+
+
     private final String direction;
-    private final int[] arr;
-    private static final int[] arr_beg = {64,25,12,22,11};
+    private final long[] arr;
+    private final long[] arr_beg = json.getArray();
     private final double exe_time;
     private final int depth;
 
-    int[] copy = Arrays.copyOf(arr_beg, arr_beg.length);
+
 
     public BubbleSort(String direction, int depth){
         this.arr = copy;
@@ -37,10 +45,10 @@ public class BubbleSort {
         this.exe_time = (endTime-startTime)/1000000000.0;
     }
 
-    public int[] getArr() {
+    public long[] getArr() {
         return Arrays.copyOf(arr, arr.length);
     }
-    public int[] getArr_beg() {
+    public long[] getArr_beg() {
         return Arrays.copyOf(arr_beg, arr_beg.length);
     }
     public String getDirection() {
@@ -58,7 +66,7 @@ public class BubbleSort {
                 if (this.arr[j] > this.arr[j+1])
                 {
                     // swap arr[j+1] and arr[j]
-                    int temp = this.arr[j];
+                    long temp = this.arr[j];
                     this.arr[j] = this.arr[j+1];
                     this.arr[j+1] = temp;
                 }
@@ -70,7 +78,7 @@ public class BubbleSort {
                 if (this.arr[j] < this.arr[j+1])
                 {
                     // swap arr[j+1] and arr[j]
-                    int temp = this.arr[j];
+                    long temp = this.arr[j];
                     this.arr[j] = this.arr[j+1];
                     this.arr[j+1] = temp;
                 }

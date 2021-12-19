@@ -1,16 +1,13 @@
 package main;
-import pl.put.poznan.transformer.logic.BubbleSort;
-import pl.put.poznan.transformer.logic.InsertionSort;
-import pl.put.poznan.transformer.logic.QuickSort;
-import pl.put.poznan.transformer.logic.SelectionSort;
 
-import java.util.Scanner;
+import pl.put.poznan.transformer.app.ReadingArrayFromJSON;
 
 public class Main {
 
-
-
-    public static void main(String args[]) {
-
+    public static void main(String[] args){
+        ReadingArrayFromJSON json = new ReadingArrayFromJSON();
+        for(int i = 0; i<json.getArray().length; i++){
+            System.out.println(json.getArray()[i]);
+        }
     }
 }
