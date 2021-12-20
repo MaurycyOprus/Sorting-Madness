@@ -3,6 +3,7 @@ package pl.put.poznan.transformer.rest;
 
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.transformer.logic.DataToSort;
+import pl.put.poznan.transformer.logic.ErrorMessage;
 import pl.put.poznan.transformer.logic.SelectionSort;
 
 import java.util.Arrays;
@@ -14,15 +15,25 @@ public class SelectionSortController {
     private long[] copy = Arrays.copyOf(arr_begin, arr_begin.length);
 
     @GetMapping("/selectionsort")
-    public SelectionSort selection_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+    public Object selection_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "normal";
-        return new SelectionSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
+        if(arr_begin.length == 0){
+            return new ErrorMessage("List is empty");
+        }
+        else{
+            return new SelectionSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
+        }
     }
 
     @GetMapping("/selectionsortreverse")
-    public SelectionSort selection_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+    public Object selection_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "reverse";
-        return new SelectionSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
+        if(arr_begin.length == 0){
+            return new ErrorMessage("List is empty");
+        }
+        else{
+            return new SelectionSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
+        }
     }
 
     @PostMapping("/addselectiondata")

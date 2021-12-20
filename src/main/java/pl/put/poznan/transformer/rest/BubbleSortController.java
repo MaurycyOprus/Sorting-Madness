@@ -4,6 +4,7 @@ package pl.put.poznan.transformer.rest;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.transformer.logic.BubbleSort;
 import pl.put.poznan.transformer.logic.DataToSort;
+import pl.put.poznan.transformer.logic.ErrorMessage;
 
 import java.util.Arrays;
 
@@ -14,14 +15,25 @@ public class BubbleSortController {
     private long[] copy = Arrays.copyOf(arr_begin, arr_begin.length);
 
     @GetMapping("/bubblesort")
-    public BubbleSort bubble_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+    public Object bubble_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "normal";
-        return new BubbleSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
+        if(arr_begin.length == 0){
+            return new ErrorMessage("List is empty");
+        }
+        else {
+            return new BubbleSort(Arrays.copyOf(arr_begin, arr_begin.length), copy, direction, depth);
+        }
     }
+
     @GetMapping("/bubblesortreverse")
-    public BubbleSort bubble_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
+    public Object bubble_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "reverse";
-        return new BubbleSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
+        if(arr_begin.length == 0){
+            return new ErrorMessage("List is empty");
+        }
+        else {
+            return new BubbleSort(Arrays.copyOf(arr_begin, arr_begin.length), copy, direction, depth);
+        }
     }
 
     @PostMapping("/addbubbledata")

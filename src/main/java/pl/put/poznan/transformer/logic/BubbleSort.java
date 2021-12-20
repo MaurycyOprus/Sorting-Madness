@@ -2,6 +2,7 @@ package pl.put.poznan.transformer.logic;
 
 import pl.put.poznan.transformer.app.ReadingArrayFromJSON;
 import pl.put.poznan.transformer.logic.DataToSort;
+import pl.put.poznan.transformer.logic.ErrorMessage;
 
 import java.util.Arrays;
 
