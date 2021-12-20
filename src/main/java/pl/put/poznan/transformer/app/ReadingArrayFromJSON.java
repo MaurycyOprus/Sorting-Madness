@@ -1,5 +1,6 @@
 package pl.put.poznan.transformer.app;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
@@ -14,8 +15,11 @@ public class ReadingArrayFromJSON {
         //Creating a JSONParser object
         JSONParser jsonParser = new JSONParser();
         try {
+            //Getting a path to a JSON file
+            String filePath = new File("").getAbsolutePath();
+            filePath = filePath.concat("\\src\\main\\resources\\json\\list.json");
             //Parsing the contents of the JSON file
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("C:/Users/MaurycyOprus/Desktop/INFA semestr 5/Inzynieria oprogramowania/laboratorium/projekt/Sorting-Madness/src/main/resources/json/list.json"));
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader(filePath));
             //Retrieving the array
             JSONArray jsonArray = (JSONArray) jsonObject.get("input");
             this.array = new long[jsonArray.size()];
