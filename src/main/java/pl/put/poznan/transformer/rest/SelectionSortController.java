@@ -16,13 +16,13 @@ public class SelectionSortController {
     @GetMapping("/selectionsort")
     public SelectionSort selection_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "normal";
-        return new SelectionSort(arr_begin,copy, direction, depth);
+        return new SelectionSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
     }
 
     @GetMapping("/selectionsortreverse")
     public SelectionSort selection_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "reverse";
-        return new SelectionSort(arr_begin,copy, direction, depth);
+        return new SelectionSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
     }
 
     @PostMapping("/addselectiondata")

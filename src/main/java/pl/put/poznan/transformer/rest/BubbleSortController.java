@@ -10,18 +10,18 @@ import java.util.Arrays;
 @RestController
 public class BubbleSortController {
 
-    private long[] arr_begin = {4, 3, 8, 1, 9, 5, 8, 2, 3, 0};
+    private static long[] arr_begin = {4, 3, 8, 1, 9, 5, 8, 2, 3, 0};
     private long[] copy = Arrays.copyOf(arr_begin, arr_begin.length);
 
     @GetMapping("/bubblesort")
     public BubbleSort bubble_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "normal";
-        return new BubbleSort(arr_begin,copy, direction, depth);
+        return new BubbleSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
     }
     @GetMapping("/bubblesortreverse")
     public BubbleSort bubble_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "reverse";
-        return new BubbleSort(arr_begin,copy, direction, depth);
+        return new BubbleSort(Arrays.copyOf(arr_begin, arr_begin.length),copy, direction, depth);
     }
 
     @PostMapping("/addbubbledata")

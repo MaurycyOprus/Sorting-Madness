@@ -16,12 +16,12 @@ public class QuickSortController {
     @GetMapping("/quicksort")
     public QuickSort quick_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "normal";
-        return new QuickSort(arr_begin, copy, direction, depth);
+        return new QuickSort(Arrays.copyOf(arr_begin, arr_begin.length), copy, direction, depth);
     }
     @GetMapping("/quicksortreverse")
     public QuickSort quick_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "reverse";
-        return new QuickSort(arr_begin, copy, direction, depth);
+        return new QuickSort(Arrays.copyOf(arr_begin, arr_begin.length), copy, direction, depth);
     }
 
     @PostMapping("/addquicksortdata")

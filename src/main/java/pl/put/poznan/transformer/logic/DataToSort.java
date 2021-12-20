@@ -7,7 +7,7 @@ public class DataToSort {
         this.arr = newArr;
     }
 
-    public  DataToSort(){
+    public DataToSort(){
 
     }
 

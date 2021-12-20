@@ -16,13 +16,13 @@ public class InsertionSortController {
     @GetMapping("/insertionsort")
     public InsertionSort insertion_sort(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "normal";
-        return new InsertionSort(arr_begin, copy, direction, depth);
+        return new InsertionSort(Arrays.copyOf(arr_begin, arr_begin.length), copy, direction, depth);
     }
 
     @GetMapping("/insertionsortreverse")
     public InsertionSort insertion_sort_rev(@RequestParam(value="depth", defaultValue = "-1")int depth) {
         String direction = "reverse";
-        return new InsertionSort(arr_begin, copy, direction, depth);
+        return new InsertionSort(Arrays.copyOf(arr_begin, arr_begin.length), copy, direction, depth);
     }
 
     @PostMapping("/addinsertiondata")

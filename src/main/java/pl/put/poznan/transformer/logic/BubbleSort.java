@@ -7,16 +7,11 @@ import java.util.Arrays;
 
 public class BubbleSort {
 
-//    ReadingArrayFromJSON json = new ReadingArrayFromJSON();
-//    long[] copy = Arrays.copyOf(json.getArray(),json.getArray().length);
-
     private final String direction;
     private final long[] arr;
     private final long[] arr_beg;
     private final double exe_time;
     private final int depth;
-
-
 
     public BubbleSort(long[] arr, long[] arr2,  String direction, int depth){
         this.arr_beg = arr2;
