@@ -13,6 +13,7 @@ public class InsertionSort {
     private final long[] arr_beg;
     private final double exe_time;
     private final int depth;
+    private final String name;
 
 
     public InsertionSort(long[] arr, long[] arr2, String direction, int depth){
@@ -20,6 +21,7 @@ public class InsertionSort {
         this.arr = arr;
         this.direction = direction;
         this.depth = depth;
+        this.name = "InsertionSort";
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
             if(this.depth <= 0) {
@@ -45,6 +47,9 @@ public class InsertionSort {
     }
     public String getDirection() {
         return direction;
+    }
+    public String getName() {
+        return name;
     }
     public double getExe_time(){
         return exe_time;

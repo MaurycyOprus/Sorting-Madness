@@ -13,12 +13,14 @@ public class BubbleSort {
     private final long[] arr_beg;
     private final double exe_time;
     private final int depth;
+    private final String name;
 
     public BubbleSort(long[] arr, long[] arr2,  String direction, int depth){
         this.arr_beg = arr2;
         this.arr = arr;
         this.direction = direction;
         this.depth = depth;
+        this.name = "BubbleSort";
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
             if(this.depth <= 0) {
@@ -47,6 +49,9 @@ public class BubbleSort {
     }
     public double getExe_time(){
         return exe_time;
+    }
+    public String getName() {
+        return name;
     }
     public int getDepth(){ return depth; }
 

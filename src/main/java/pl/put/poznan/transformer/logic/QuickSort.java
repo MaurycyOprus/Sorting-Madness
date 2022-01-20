@@ -14,6 +14,7 @@ public class QuickSort {
     private final long[] arr_beg;
     private final double exe_time;
     private final int depth;
+    private final String name;
 
 
     public QuickSort(long[] arr, long[] arr2, String direction, int depth){
@@ -22,6 +23,7 @@ public class QuickSort {
         this.arr = arr;
         this.direction = direction;
         this.depth = depth;
+        this.name = "QuickSort";
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
             if(this.depth <= 0) {
@@ -50,6 +52,9 @@ public class QuickSort {
     }
     public double getExe_time(){
         return exe_time;
+    }
+    public String getName() {
+        return name;
     }
     // A utility function to swap two elements
     void swap(int i, int j)

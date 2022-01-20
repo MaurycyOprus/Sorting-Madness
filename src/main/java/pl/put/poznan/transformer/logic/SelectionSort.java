@@ -11,12 +11,14 @@ public class SelectionSort {
     private final long[] arr_beg;
     private final double exe_time;
     private final int depth;
+    private final String name;
 
     public SelectionSort(long[] arr, long[] arr2,  String direction, int depth){
         this.arr_beg = arr2;
         this.arr = arr;
         this.direction = direction;
         this.depth = depth;
+        this.name = "SelectionSort";
         long startTime = System.nanoTime();
         if(this.direction.equals("reverse")){
             if(this.depth <= 0) {
@@ -45,6 +47,9 @@ public class SelectionSort {
     }
     public double getExe_time(){
         return exe_time;
+    }
+    public String getName() {
+        return name;
     }
     void sort(int depth)
     {
