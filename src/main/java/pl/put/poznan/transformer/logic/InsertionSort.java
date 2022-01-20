@@ -9,10 +9,10 @@ public class InsertionSort {
 //    long[] copy = Arrays.copyOf(json.getArray(),json.getArray().length);
 
     private final String direction;
-    private final long[] arr;
+    private long[] arr;
     private final long[] arr_beg;
     private final double exe_time;
-    private final int depth;
+    private int depth;
     private final String name;
 
 
@@ -39,6 +39,7 @@ public class InsertionSort {
         this.exe_time = (endTime-startTime)/1000000000.0;
     }
 
+    // gettery
     public long[] getArr() {
         return Arrays.copyOf(arr, arr.length);
     }
@@ -56,7 +57,15 @@ public class InsertionSort {
     }
     public int getDepth(){ return depth; }
 
-    void sort(int depth){
+    // settery
+    public void setArr(long[] table) {
+        this.arr = table;
+    }
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
+
+    long[] sort(int depth){
         for (int i = 1; i < depth; ++i) {
             long key = this.arr[i];
             int j = i - 1;
@@ -70,9 +79,10 @@ public class InsertionSort {
             }
             this.arr[j + 1] = key;
         }
+        return this.arr_beg;
     }
 
-    void ReverseSort(int depth){
+    long[] ReverseSort(int depth){
         for (int i = 1; i < depth; ++i) {
             long key = this.arr[i];
             int j = i - 1;
@@ -86,6 +96,7 @@ public class InsertionSort {
             }
             this.arr[j + 1] = key;
         }
+        return this.arr_beg;
     }
 
 }

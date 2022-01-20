@@ -51,6 +51,7 @@ public class SelectionSort {
     public String getName() {
         return name;
     }
+    public int getDepth(){ return depth; }
     void sort(int depth)
     {
 

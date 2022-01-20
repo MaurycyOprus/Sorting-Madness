@@ -56,6 +56,7 @@ public class QuickSort {
     public String getName() {
         return name;
     }
+    public int getDepth(){ return depth; }
     // A utility function to swap two elements
     void swap(int i, int j)
     {

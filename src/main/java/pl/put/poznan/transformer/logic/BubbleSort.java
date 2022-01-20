@@ -9,10 +9,10 @@ import java.util.Arrays;
 public class BubbleSort {
 
     private final String direction;
-    private final long[] arr;
+    private long[] arr;
     private final long[] arr_beg;
     private final double exe_time;
-    private final int depth;
+    private int depth;
     private final String name;
 
     public BubbleSort(long[] arr, long[] arr2,  String direction, int depth){
@@ -38,6 +38,7 @@ public class BubbleSort {
         this.exe_time = (endTime-startTime)/1000000000.0;
     }
 
+    // gettery
     public long[] getArr() {
         return Arrays.copyOf(arr, arr.length);
     }
@@ -55,7 +56,15 @@ public class BubbleSort {
     }
     public int getDepth(){ return depth; }
 
-    void sort(int depth)
+    // settery
+    public void setArr(long[] table) {
+        this.arr = table;
+    }
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
+
+    long[] sort(int depth)
     {
         for (int i = 0; i < depth-1; i++)
             for (int j = 0; j < depth-i-1; j++)
@@ -66,8 +75,9 @@ public class BubbleSort {
                     this.arr[j] = this.arr[j+1];
                     this.arr[j+1] = temp;
                 }
+        return this.arr_beg;
     }
-    void ReverseSort(int depth)
+    long[] ReverseSort(int depth)
     {
         for (int i = 0; i < depth-1; i++)
             for (int j = 0; j < depth-i-1; j++)
@@ -78,6 +88,7 @@ public class BubbleSort {
                     this.arr[j] = this.arr[j+1];
                     this.arr[j+1] = temp;
                 }
+        return this.arr_beg;
     }
 
 }
