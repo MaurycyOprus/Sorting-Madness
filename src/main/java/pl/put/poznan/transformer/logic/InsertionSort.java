@@ -65,6 +65,7 @@ public class InsertionSort {
         this.depth = depth;
     }
 
+
     long[] sort(int depth){
         for (int i = 1; i < depth; ++i) {
             long key = this.arr[i];
